@@ -1,81 +1,83 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-class CVTabs extends React.Component {
-  state = {
-    value: 0,
-  };
+const styles = theme => ({
+  root: {
+    width: '100%',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+});
 
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
+function SimpleExpansionPanel(props) {
+  const { classes } = props;
 
-  render() {
     const tabs = [
-      {
+    {
         "username": "chloe@sample.com",
         "contact": "something",
-        "document_id": "af4b2804d2ec-d9fff3f-807e-4b20",
+        "document_id": "doc_id",
         "status": "PENDING"
-      }
-    ];
+    },
+    {
+        "username": "peter@sample.com",
+        "contact": "something",
+        "document_id": "doc_id",
+        "status": "PENDING"
+    },
+    {
+        "username": "Pedro",
+        "contact": "mock-contact",
+        "document_id": "3d9fff3f-807e-4b20-871f-af4b2804d2ec",
+        "status": "PENDING"
+    },
+    {
+        "username": "Chloe",
+        "contact": "chloemcateer@sample.com",
+        "document_id": "7dd50fb9-c1e0-4222-86cc-1f1893ce4858",
+        "status": "PENDING"
+    },
+    {
+        "username": "Eamon",
+        "contact": "eamon@sample.com",
+        "document_id": "e6894d9f-c457-4a06-ae7c-ce294ac8fa32",
+        "status": "PENDING"
+    }
+];
 
     const documents = tabs.map((tab) => tab.document_id);
 
-    const { classes } = this.props;
-    const { value } = this.state;
-
-    return (
-      <div className="tabs">
-        <AppBar position="static">
-          <Tabs value={value} onChange={this.handleChange}>
-            {documents.map(document => (
-              <Tab key={document} value={document} label={document} />
-            ))}
-          </Tabs>
-        </AppBar>
-
-        {
-          documents.map(document => (
-            <TabContainer documentId={document.document_id}>document_id</TabContainer>
-          ))
-        }
-      </div>
-    );
-  }
-}
-
-CVTabs.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-function TabContainer(props) {
-  console.log(props.documentId);
-  const docURL = "https://s3-eu-west-1.amazonaws.com/diversecv-documents/"
-  docURL.concat(props.document_id);
-  docURL.concat(".pdf");
   return (
-    <div class="pdf">
-      <object data="https://s3-eu-west-1.amazonaws.com/diversecv-documents/13dfcdeb-472e-4463-9657-bdef42e88cae.pdf" type="application/pdf">
-      </object>
+    <div className={classes.root}>
+
+
+{documents.map(document => (
+      <ExpansionPanel>
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography className={classes.heading}>document.document_id</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+            sit amet blandit leo lobortis eget.
+          </Typography>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+            ))}
     </div>
   );
 }
 
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
+SimpleExpansionPanel.propTypes = {
+  classes: PropTypes.object.isRequired,
 };
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-});
-
-export default withStyles(styles)(CVTabs);
+export default withStyles(styles)(SimpleExpansionPanel);
