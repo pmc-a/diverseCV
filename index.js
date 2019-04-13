@@ -11,9 +11,6 @@ import './style.css';
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      name: 'React'
-    };
   }
 
   renderNavBar() {
@@ -24,12 +21,6 @@ class App extends Component {
     return (
       <div>
         {this.renderNavBar()}
-
-        <Hello name={this.state.name} />
-        <p>
-          Start editing to see some magic :)
-        </p>
-
       </div>
     );
   }
@@ -41,7 +32,7 @@ class NavBar extends React.Component {
       <HashRouter>
         <div>
           <ul>
-            <li><NavLink to="/">Home</NavLink></li>
+            <li class="nameNavBar">DiverseCV</li>
             <li><NavLink to="/upload">Upload</NavLink></li>
             <li><NavLink to="/review">Review</NavLink></li>
           </ul>

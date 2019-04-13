@@ -23,6 +23,15 @@ li a {
   text-decoration: none;
 }
 
+.nameNavBar {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  float: left
+}
+
 li a:hover {
   background-color: #111;
 }
@@ -98,4 +107,8 @@ input[type=submit]:hover {
     width: 100%;
     margin-top: 0;
   }
+}
+
+.pdf {
+  
 }
