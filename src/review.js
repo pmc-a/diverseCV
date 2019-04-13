@@ -50,10 +50,7 @@ class SimpleExpansionPanel extends Component {
               <Typography className={classes.heading}>{document.document_id}</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                sit amet blandit leo lobortis eget.
-              </Typography>
+              <iframe src={`https://s3-eu-west-1.amazonaws.com/diversecv-documents/${document.document_id}-redacted.pdf`} width='50%' height='500px' />
             </ExpansionPanelDetails>
           </ExpansionPanel>
         ))
