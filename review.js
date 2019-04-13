@@ -59,25 +59,25 @@ function SimpleExpansionPanel(props) {
   return (
     <div className={classes.root}>
 
-
       {tabs.map(document => (
-
         <ExpansionPanel>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>{document.document_id}</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
+          
             <div>
-              <script>createURL({document.document_id});
-              </script>
-
-              <object data="https://s3-eu-west-1.amazonaws.com/diversecv-documents/13dfcdeb-472e-4463-9657-bdef42e88cae.pdf" type="application/pdf" />
+              <object data={this.createURL({document.document_id})} type="application/pdf" />
             </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
       ))}
     </div>
   );
+}
+
+function createURL(doc_id) {
+  return url = "https://s3-eu-west-1.amazonaws.com/diversecv-documents/" + doc_id + ".pdf";
 }
 
 SimpleExpansionPanel.propTypes = {
