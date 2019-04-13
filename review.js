@@ -20,58 +20,62 @@ const styles = theme => ({
 function SimpleExpansionPanel(props) {
   const { classes } = props;
 
-    const tabs = [
+  const tabs = [
     {
-        "username": "chloe@sample.com",
-        "contact": "something",
-        "document_id": "doc_id",
-        "status": "PENDING"
+      "username": "chloe@sample.com",
+      "contact": "something",
+      "document_id": "doc_id",
+      "status": "PENDING"
     },
     {
-        "username": "peter@sample.com",
-        "contact": "something",
-        "document_id": "doc_id",
-        "status": "PENDING"
+      "username": "peter@sample.com",
+      "contact": "something",
+      "document_id": "doc_id",
+      "status": "PENDING"
     },
     {
-        "username": "Pedro",
-        "contact": "mock-contact",
-        "document_id": "3d9fff3f-807e-4b20-871f-af4b2804d2ec",
-        "status": "PENDING"
+      "username": "Pedro",
+      "contact": "mock-contact",
+      "document_id": "3d9fff3f-807e-4b20-871f-af4b2804d2ec",
+      "status": "PENDING"
     },
     {
-        "username": "Chloe",
-        "contact": "chloemcateer@sample.com",
-        "document_id": "7dd50fb9-c1e0-4222-86cc-1f1893ce4858",
-        "status": "PENDING"
+      "username": "Chloe",
+      "contact": "chloemcateer@sample.com",
+      "document_id": "7dd50fb9-c1e0-4222-86cc-1f1893ce4858",
+      "status": "PENDING"
     },
     {
-        "username": "Eamon",
-        "contact": "eamon@sample.com",
-        "document_id": "e6894d9f-c457-4a06-ae7c-ce294ac8fa32",
-        "status": "PENDING"
+      "username": "Eamon",
+      "contact": "eamon@sample.com",
+      "document_id": "e6894d9f-c457-4a06-ae7c-ce294ac8fa32",
+      "status": "PENDING"
     }
-];
+  ];
 
-    const documents = tabs.map((tab) => tab.document_id);
-
+  const documents = tabs.map((tab) => tab.document_id);
+  const url = "https://s3-eu-west-1.amazonaws.com/diversecv-documents/";
+  <script type="text/javascript" src='object.js'> </script>
   return (
     <div className={classes.root}>
 
 
-{documents.map(document => (
-      <ExpansionPanel>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.heading}>document.document_id</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-            ))}
+      {tabs.map(document => (
+
+        <ExpansionPanel>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography className={classes.heading}>{document.document_id}</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <div>
+              <script>createURL({document.document_id});
+              </script>
+
+              <object data="https://s3-eu-west-1.amazonaws.com/diversecv-documents/13dfcdeb-472e-4463-9657-bdef42e88cae.pdf" type="application/pdf" />
+            </div>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      ))}
     </div>
   );
 }

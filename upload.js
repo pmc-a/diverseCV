@@ -7,7 +7,7 @@ class Upload extends Component {
         <form enctype="multipart/form-data" method="post" action="#">
           <div class="row">
             <div class="col-25">
-              <label for="fname">Name</label>
+              <label for="fname">Peter</label>
             </div>
             <div class="col-75">
               <input type="text" id="name" name="name" placeholder="John Smith" />
